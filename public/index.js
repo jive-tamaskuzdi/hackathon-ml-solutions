@@ -13,16 +13,42 @@ const root = document.querySelector("#app");
 
 const App = () => {
   const [meetingId, setMeetingId] = useState("");
-  const [data, setData] = useState();
+  const [meetingData, setMeetingData] = useState();
   useEffect(() => {
     console.log("from effect", meetingId);
   }, [meetingId]);
 
-  function onSubmit(event) {
+  async function onSubmit(event) {
     event.preventDefault();
+    
+    let data;
+    try {
+        const response = await fetch(`/meeting/${meetingId}`);
+        data = await response.json();
 
-    fetch(`/meeting/${meetingId}`).then(resp => resp.json()).then((data) => {setData(data)});
-
+    } catch (error) {
+        data = [
+            {
+                participantId: 'fake_id',
+                changes: [
+                    {
+                        emotion: 'sad',
+                        timestamp: '2020-06-09T10:30:00Z'
+                    },
+                    {
+                        emotion: 'happy',
+                        timestamp: '2020-06-09T10:32:00Z'
+                    },
+                    {
+                        emotion: 'mad',
+                        timestamp: '2020-06-09T10:44:00Z'
+                    }
+                ]
+            }
+        ]
+    }
+    
+    setMeetingData(data)
   }
 
   return html`
@@ -36,7 +62,7 @@ const App = () => {
         type="text"
       />
     </form>
-    ${data ? `<${Charts} data=${data} />` : null}
+    ${meetingData ? html`<${Charts} data=${meetingData} />` : null}
   `;
 };
 
