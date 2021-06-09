@@ -81,7 +81,7 @@ const App = () => {
   }
 
   return html`
-    <h1>App</h1>
+    <h1>GoToMeeting emotions</h1>
     <form onSubmit=${(event) => onSubmit(event)}>
       <label for="meeting-id">Meeting ID:</label>
       <input
@@ -91,8 +91,14 @@ const App = () => {
         type="text"
       />
     </form>
-    ${meetingData ? html`<${Timeline} data=${meetingData} />` : null}
+    <div>
+    <div style="display: inline-block; width:50%;">
     ${meetingData ? html`<${Charts} data=${meetingData} />` : null}
+    </div>
+    <div style="display: inline-block; width:50%;">
+    ${meetingData ? html`<${Timeline} data=${meetingData} />` : null}
+    </div>
+    </div>
   `;
 };
 
