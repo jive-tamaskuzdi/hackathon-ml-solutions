@@ -6,6 +6,11 @@ var { stats } = require('./statistics');
 router.get('/:meetingid', function (req, res, next) {
   const meeting = stats.meetings[req.params.meetingid];
 
+  if (!meeting) {
+    res.sendStatus(404);
+    return;
+  }
+
   const result = Object.keys(meeting).reduce((a,participantId)=>{
     a.push({
       participantId,
@@ -34,6 +39,17 @@ router.post('/:meetingid/emotion', function (req, res, next) {
   });
 
   res.status(201);
+  res.send();
+});
+
+router.delete('/:meetingid', function (req, res, next) {
+  const { meetingid } = req.params;
+  
+  if (stats.meetings[meetingid]) {
+    delete stats.meetings[meetingid];
+  }
+  
+  res.status(200);
   res.send();
 });
 
