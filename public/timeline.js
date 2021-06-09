@@ -115,7 +115,7 @@ export function Timeline({ data }) {
         plugins: {
           title: {
             display: true,
-            text: 'Chart.js Bar Chart - Stacked'
+            text: 'Timeline of the meeting by emotions'
           },
         },
         responsive: true,
