@@ -5,6 +5,7 @@ import {
   useState,
 } from "https://unpkg.com/preact@latest/hooks/dist/hooks.module.js?module";
 import { Charts } from "./charts.js";
+import { Timeline } from "./timeline.js";
 
 export const html = htm.bind(h);
 
@@ -13,6 +14,7 @@ const root = document.querySelector("#app");
 const App = () => {
   const [meetingId, setMeetingId] = useState("");
   const [meetingData, setMeetingData] = useState();
+  
   useEffect(() => {
     console.log("from effect", meetingId);
   }, [meetingId]);
@@ -89,6 +91,7 @@ const App = () => {
         type="text"
       />
     </form>
+    ${meetingData ? html`<${Timeline} data=${meetingData} />` : null}
     ${meetingData ? html`<${Charts} data=${meetingData} />` : null}
   `;
 };
