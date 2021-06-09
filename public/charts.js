@@ -9,7 +9,15 @@ import {
   differenceInSeconds,
 } from "https://unpkg.com/date-fns@2.22.1/esm/index.js";
 
-const emotions = ["neutral", "surprised", "happy"];
+const emotions = [
+  "neutral",
+  "surprised",
+  "happy",
+  "sad",
+  "angry",
+  "fearful",
+  "disgusted",
+];
 
 export function Charts({ data }) {
   const canvasRef = useRef();
