@@ -34,6 +34,8 @@ export function Timeline({ data }) {
       now = new Date(now.getTime() + milisecIncrement);
     }
 
+    console.log('times', times)
+
     const participantEmotions = {}
     data.forEach(participant => {
       participantEmotions[participant.participantId] = [];
@@ -48,7 +50,9 @@ export function Timeline({ data }) {
         participantEmotions[participant.participantId].push(currentEmotion);
       })
     });
-    console.log(participantEmotions);
+
+
+    console.log('participant emotions', participantEmotions);
 
 
     const emotions = ['neutral', 'happy', 'sad', 'angry', 'fearful', 'disgusted', 'surprised'];
@@ -72,7 +76,7 @@ export function Timeline({ data }) {
       })
     });
 
-    console.log(emotionamounts)
+    console.log('emotinoamounts', emotionamounts)
 
     const chartDataset = [];
     for (const emotion of emotions) {
@@ -80,7 +84,9 @@ export function Timeline({ data }) {
         label: emotion,
         data: emotionamounts[emotion],
         backgroundColor: colors[emotion],
-        // backgroundColor: "rgba(255, 99, 132, 0.2)",
+        maxBarThickness: 10,
+        skipNull: false,
+        borderColor:  colors[emotion],
       })
     }
 
@@ -92,42 +98,56 @@ export function Timeline({ data }) {
     };
 
     new Chart(contextRef.current, {
-      // type: 'line',
-      // data: chartdata,
-      // options: {
-      //   responsive: true,
-      //   plugins: {
-      //     legend: {
-      //       position: 'top',
-      //     },
-      //     title: {
-      //       display: true,
-      //       text: 'Timeline'
-      //     }
-      //   }
-      // },
-
-
-
       type: 'bar',
       data: chartdata,
       options: {
+        responsive: true,
         plugins: {
+          legend: {
+            position: 'top',
+          },
           title: {
             display: true,
-            text: 'Timeline of the meeting by emotions'
-          },
-        },
-        responsive: true,
-        scales: {
-          x: {
-            stacked: true,
-          },
-          y: {
-            stacked: true
+            text: 'Timeline'
           }
-        }
-      }
+        },
+        scales: {
+              x: {
+                stacked: true,
+              },
+              y: {
+                stacked: true,
+                min: 0,
+                max: 6
+              }
+            }
+      },
+
+
+
+      // type: 'bar',
+      // data: chartdata,
+      // options: {
+      //   plugins: {
+      //     title: {
+      //       display: true,
+      //       text: 'Timeline of the meeting by emotions'
+      //     },
+      //   },
+      //   responsive: true,
+      //   scales: {
+      //     x: {
+      //       stacked: true,
+      //       min: 0,
+      //       max: 10
+      //     },
+      //     y: {
+      //       stacked: true,
+      //       min: 0,
+      //       max: 10
+      //     }
+      //   }
+      // }
     });
   }, []);
 
