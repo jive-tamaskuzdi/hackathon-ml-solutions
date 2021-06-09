@@ -5,7 +5,6 @@ import {
   useState,
 } from "https://unpkg.com/preact@latest/hooks/dist/hooks.module.js?module";
 import { Charts } from "./charts.js";
-import { Chart } from "https://www.unpkg.com/chart.js@3.3.2/dist/chart.esm.js";
 
 export const html = htm.bind(h);
 
@@ -20,35 +19,18 @@ const App = () => {
 
   async function onSubmit(event) {
     event.preventDefault();
-    
+
     let data;
     try {
-        const response = await fetch(`/meeting/${meetingId}`);
-        data = await response.json();
-
+      const response = await fetch(`/meeting/${meetingId}`);
+      data = await response.json();
     } catch (error) {
-        data = [
-            {
-                participantId: 'fake_id',
-                changes: [
-                    {
-                        emotion: 'sad',
-                        timestamp: '2020-06-09T10:30:00Z'
-                    },
-                    {
-                        emotion: 'happy',
-                        timestamp: '2020-06-09T10:32:00Z'
-                    },
-                    {
-                        emotion: 'mad',
-                        timestamp: '2020-06-09T10:44:00Z'
-                    }
-                ]
-            }
-        ]
+      data = JSON.parse(
+        '[{"participantId":"Tamas Kuzdi","changes":[{"emotion":"neutral","timestamp":"Wed, 09 Jun 2021 11:59:38 GMT"},{"emotion":"surprised","timestamp":"Wed, 09 Jun 2021 11:59:44 GMT"},{"emotion":"happy","timestamp":"Wed, 09 Jun 2021 11:59:46 GMT"},{"emotion":"surprised","timestamp":"Wed, 09 Jun 2021 11:59:48 GMT"},{"emotion":"neutral","timestamp":"Wed, 09 Jun 2021 11:59:50 GMT"},{"emotion":"surprised","timestamp":"Wed, 09 Jun 2021 11:59:58 GMT"},{"emotion":"happy","timestamp":"Wed, 09 Jun 2021 12:00:00 GMT"},{"emotion":"neutral","timestamp":"Wed, 09 Jun 2021 12:00:02 GMT"}]}]'
+      );
     }
-    
-    setMeetingData(data)
+
+    setMeetingData(data);
   }
 
   return html`
