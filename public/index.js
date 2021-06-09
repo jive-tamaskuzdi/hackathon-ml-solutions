@@ -29,49 +29,78 @@ const App = () => {
     } catch (error) {
       data = [
         {
-          participantId: "Tamas Kuzdi",
+          participantId: "Franklin",
           changes: [
-            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 11:59:38 GMT" },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 14:54:35 GMT" },
+            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 14:54:36 GMT" },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 14:54:43 GMT" },
+            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 14:54:51 GMT" },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 14:54:55 GMT" },
+            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 14:55:01 GMT" },
+            { emotion: "angry", timestamp: "Wed, 09 Jun 2021 14:55:10 GMT" },
+            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 14:55:14 GMT" },
+            { emotion: "angry", timestamp: "Wed, 09 Jun 2021 14:55:19 GMT" },
             {
               emotion: "surprised",
-              timestamp: "Wed, 09 Jun 2021 11:59:54 GMT",
+              timestamp: "Wed, 09 Jun 2021 14:55:22 GMT",
             },
-            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 11:59:46 GMT" },
-            {
-              emotion: "surprised",
-              timestamp: "Wed, 09 Jun 2021 11:59:57 GMT",
-            },
-            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 11:59:50 GMT" },
-            {
-              emotion: "surprised",
-              timestamp: "Wed, 09 Jun 2021 11:59:58 GMT",
-            },
-            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 12:00:00 GMT" },
-            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 12:00:02 GMT" },
-            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 12:00:08 GMT" },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 15:01:00 GMT" },
+            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 15:01:39 GMT" },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 15:01:41 GMT" },
+            { emotion: "angry", timestamp: "Wed, 09 Jun 2021 15:01:51 GMT" },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 15:01:53 GMT" },
+            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 15:02:11 GMT" },
           ],
         },
         {
-          participantId: "Simon Abris",
+          participantId: "Peter Botos",
           changes: [
-            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 11:59:34 GMT" },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 14:54:59 GMT" },
+            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 14:55:03 GMT" },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 14:55:05 GMT" },
             {
               emotion: "surprised",
-              timestamp: "Wed, 09 Jun 2021 11:59:39 GMT",
+              timestamp: "Wed, 09 Jun 2021 14:55:07 GMT",
             },
-            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 11:59:43 GMT" },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 14:55:09 GMT" },
             {
               emotion: "surprised",
-              timestamp: "Wed, 09 Jun 2021 11:59:48 GMT",
+              timestamp: "Wed, 09 Jun 2021 14:55:15 GMT",
             },
-            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 11:59:50 GMT" },
+            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 14:55:17 GMT" },
+            { emotion: "angry", timestamp: "Wed, 09 Jun 2021 14:55:19 GMT" },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 14:55:29 GMT" },
             {
               emotion: "surprised",
-              timestamp: "Wed, 09 Jun 2021 11:59:58 GMT",
+              timestamp: "Wed, 09 Jun 2021 14:55:33 GMT",
             },
-            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 12:00:00 GMT" },
-            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 12:00:05 GMT" },
-            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 12:00:13 GMT" },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 14:55:35 GMT" },
+            {
+              emotion: "surprised",
+              timestamp: "Wed, 09 Jun 2021 14:56:29 GMT",
+            },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 14:56:35 GMT" },
+            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 14:57:28 GMT" },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 14:57:30 GMT" },
+            {
+              emotion: "surprised",
+              timestamp: "Wed, 09 Jun 2021 14:57:58 GMT",
+            },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 14:58:06 GMT" },
+          ],
+        },
+        {
+          participantId: "Tamas Kuzdi",
+          changes: [
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 14:55:23 GMT" },
+          ],
+        },
+        {
+          participantId: "Abris",
+          changes: [
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 14:57:04 GMT" },
+            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 14:57:27 GMT" },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 14:57:29 GMT" },
           ],
         },
       ];
@@ -92,12 +121,12 @@ const App = () => {
       />
     </form>
     <div>
-    <div style="display: inline-block; width:50%;">
-    ${meetingData ? html`<${Charts} data=${meetingData} />` : null}
-    </div>
-    <div style="display: inline-block; width:50%;">
-    ${meetingData ? html`<${Timeline} data=${meetingData} />` : null}
-    </div>
+      <div style="display: inline-block; width:50%;">
+        ${meetingData ? html`<${Charts} data=${meetingData} />` : null}
+      </div>
+      <div style="display: inline-block; width:50%;">
+        ${meetingData ? html`<${Timeline} data=${meetingData} />` : null}
+      </div>
     </div>
   `;
 };

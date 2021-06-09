@@ -156,24 +156,31 @@ export function Charts({ data }) {
 function calculateDiffs(changes, endOfMeeting) {
   const newArr = [];
 
-  for (let i = 0; i < changes.length; i++) {
-    const element = changes[i];
-    if (i === changes.length - 1) {
-      newArr.push({
-        ...element,
-        diff: differenceInSeconds(
-          new Date(element.timestamp),
-          new Date(changes[i - 1].timestamp)
-        ),
-      });
-    } else {
-      newArr.push({
-        ...element,
-        diff: differenceInSeconds(
-          new Date(changes[i + 1].timestamp),
-          new Date(element.timestamp)
-        ),
-      });
+  if (changes.length === 1) {
+    newArr.push({
+      ...changes[0],
+      diff: differenceInSeconds(endOfMeeting, new Date(changes[0].timestamp)),
+    });
+  } else {
+    for (let i = 0; i < changes.length; i++) {
+      const element = changes[i];
+      if (i === changes.length - 1) {
+        newArr.push({
+          ...element,
+          diff: differenceInSeconds(
+            new Date(element.timestamp),
+            new Date(changes[i - 1].timestamp)
+          ),
+        });
+      } else {
+        newArr.push({
+          ...element,
+          diff: differenceInSeconds(
+            new Date(changes[i + 1].timestamp),
+            new Date(element.timestamp)
+          ),
+        });
+      }
     }
   }
 
