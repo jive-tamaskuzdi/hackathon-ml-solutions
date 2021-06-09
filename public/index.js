@@ -25,9 +25,54 @@ const App = () => {
       const response = await fetch(`/meeting/${meetingId}`);
       data = await response.json();
     } catch (error) {
-      data = JSON.parse(
-        '[{"participantId":"Tamas Kuzdi","changes":[{"emotion":"neutral","timestamp":"Wed, 09 Jun 2021 11:59:38 GMT"},{"emotion":"surprised","timestamp":"Wed, 09 Jun 2021 11:59:44 GMT"},{"emotion":"happy","timestamp":"Wed, 09 Jun 2021 11:59:46 GMT"},{"emotion":"surprised","timestamp":"Wed, 09 Jun 2021 11:59:48 GMT"},{"emotion":"neutral","timestamp":"Wed, 09 Jun 2021 11:59:50 GMT"},{"emotion":"surprised","timestamp":"Wed, 09 Jun 2021 11:59:58 GMT"},{"emotion":"happy","timestamp":"Wed, 09 Jun 2021 12:00:00 GMT"},{"emotion":"neutral","timestamp":"Wed, 09 Jun 2021 12:00:02 GMT"}]}]'
-      );
+      data = [
+        {
+          participantId: "Tamas Kuzdi",
+          changes: [
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 11:59:38 GMT" },
+            {
+              emotion: "surprised",
+              timestamp: "Wed, 09 Jun 2021 11:59:44 GMT",
+            },
+            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 11:59:46 GMT" },
+            {
+              emotion: "surprised",
+              timestamp: "Wed, 09 Jun 2021 11:59:48 GMT",
+            },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 11:59:50 GMT" },
+            {
+              emotion: "surprised",
+              timestamp: "Wed, 09 Jun 2021 11:59:58 GMT",
+            },
+            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 12:00:00 GMT" },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 12:00:02 GMT" },
+            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 12:00:08 GMT" },
+          ],
+        },
+        {
+          participantId: "Simon Abris",
+          changes: [
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 11:59:34 GMT" },
+            {
+              emotion: "surprised",
+              timestamp: "Wed, 09 Jun 2021 11:59:39 GMT",
+            },
+            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 11:59:43 GMT" },
+            {
+              emotion: "surprised",
+              timestamp: "Wed, 09 Jun 2021 11:59:48 GMT",
+            },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 11:59:50 GMT" },
+            {
+              emotion: "surprised",
+              timestamp: "Wed, 09 Jun 2021 11:59:58 GMT",
+            },
+            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 12:00:00 GMT" },
+            { emotion: "neutral", timestamp: "Wed, 09 Jun 2021 12:00:05 GMT" },
+            { emotion: "happy", timestamp: "Wed, 09 Jun 2021 12:00:13 GMT" },
+          ],
+        },
+      ];
     }
 
     setMeetingData(data);
