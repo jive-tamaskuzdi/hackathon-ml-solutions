@@ -5,6 +5,9 @@ var { stats } = require('./statistics');
 
 router.get('/:meetingid', function (req, res, next) {
   const meeting = stats.meetings[req.params.meetingid];
+  const { from, to } = req.query;
+  const fromDate = from && Date.parse(from);
+  const toDate = to && Date.parse(to);
 
   if (!meeting) {
     res.sendStatus(404);
@@ -12,10 +15,19 @@ router.get('/:meetingid', function (req, res, next) {
   }
 
   const result = Object.keys(meeting).reduce((a,participantId)=>{
-    a.push({
-      participantId,
-      changes: meeting[participantId]
+    const changes = meeting[participantId].filter((emotion) => {
+      const emotionDate = Date.parse(emotion.timestamp);
+      return (!fromDate || fromDate <= emotionDate) &&
+        (!toDate || emotionDate <= toDate);
     });
+
+    if (changes.length > 0) {
+      a.push({
+        participantId,
+        changes,
+      });
+    }
+
     return a;
   }, []);
 
